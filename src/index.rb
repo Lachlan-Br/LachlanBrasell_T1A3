@@ -19,37 +19,15 @@ def print_options
     return opt 
 end 
 
-# def edit_delete_product()
-#     #show the list of products, just keys
-#     puts hash.keys
-#     #ask about the product we want to delete
-#     print "What's the product you want to delete? "
-#     name = gets.chomp.to_sym
-#     #make sure it is in the Hash
-#     if hash.has_key?(name)
-#         print "Are you sure you want to delete it?(y/n) "
-#         confirm = gets.chomp
-#         if confirm == "y"
-#             hash.delete(name)
-#             puts "You have deleted this profile."
-#         else
-#             #condition ? true : false
-#             puts mode == "delete"? "Deletion aborted..." : "Update aborted..."
-#             #puts "Deletion aborted..."
-#         end
-#     else
-#         puts "#{name} is not in the menu"
-#     end
 
-#     print_menu(hash)
-# end
     
-
+#This is option 1
 def print_profiles(profile_hasharray)
     puts "These are the current profiles: "
     profile_hasharray.each {|profile, username, password| puts "#{profile}: #{username} #{password}" }
 end
 
+#This is option 3
 def input_user_up (profile_hasharray)
     print "What profile name would you like to give this password?"
     prof = gets.chomp
@@ -63,7 +41,28 @@ def input_user_up (profile_hasharray)
     print_profiles(profile_hasharray)
 end
 
-
+#This is option 5
+def edit_delete_product(profile_hasharray)
+    #show the list of products, just keys
+    puts profile_hasharray.keys
+    #ask about the product we want to delete
+    print "What profile would you like to delete? (Note you cannot get this back.)"
+    name = gets.chomp.to_sym
+    #make sure it is in the Hash
+    if profile_hasharray.has_key?(name)
+        print "Are you sure you want to delete it?(y/n) "
+        confirm = gets.chomp
+        if confirm == "y"
+            hash.delete(name)
+            puts "You have deleted this profile."
+        else
+            puts "Abortion deleted, going back to menu."
+        end
+    else
+        puts "#{name} is not in the menu"
+    end
+    print_menu(hash)
+end
 
 
 profile_hasharray = [{name: "Yournamehere", username: "exampleuser", password: "examplepass"}, {name: "secondexample", username: "examptwo", password: "example"} ]
@@ -77,11 +76,11 @@ profile_hasharray = [{name: "Yournamehere", username: "exampleuser", password: "
             when "1"
                 print_profiles(profile_hasharray)
             when "2"
-                input_user_up(profile_hasharray)
-            when "3"
                 #print_menu(hash_products)
+            when "3"
+                input_user_up(profile_hasharray)
             when "4"
-                
+                #auto generation
             when "5"
                 #edit_delete_product(hash_products, "delete")
             when "6"

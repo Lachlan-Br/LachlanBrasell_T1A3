@@ -1,65 +1,73 @@
->> require 'rubygems'
->> require 'passgen'
->> Passgen::generate
-=> "zLWCeS3xC9"
+# >> require 'rubygems'
+# >> require 'passgen'
+# >> Passgen::generate
+# => "zLWCeS3xC9"
 
 
 
-will do:
-    - methods to do uppercase and lower
-        -do only lower
-        -numbers and  symbols
+# #will do:
+#     - methods to do uppercase and lower
+#         -do only lower
+#         -numbers and  symbols
         
-    - methods to do usernames similar to above but
-        - only upper and lower case
-        - no symbols
-        - number and letters only.
+#     - methods to do usernames similar to above but
+#         - only upper and lower case
+#         - no symbols
+#         - number and letters only.
         
-    end
+#     end
 
 
 
-user_length = gets.chomp.to_i
+#user_length = gets.chomp.to_i
 
-Passgen::generate(:length => user_length)
+#Passgen::generate(:length => user_length)
 
-
-
-
+passwordgen_LNSC
 
 
 
 
-if passgen does not work can use - This allows users to choose a length.
+
+
+#if passgen does not work can use - This allows users to choose a length.
 
 #This is for without symbols
+def passwordgen_LNC
     CHARS_LNC = ('0'..'9').to_a + ('A'..'Z').to_a + ('a'..'z').to_a
     def user_pass_gen (length = gets.chomp.to_i)
     CHARS_LN.sort_by { rand }.join[0...length]
     end
+end
     
     puts "This is your new password: " + user_pass_gen
 
 #this is for with symbols
+def passwordgen_LNSC
     CHARS = ('0'..'9').to_a + ('A'..'Z').to_a + ('a'..'z').to_a + ('!'..'+').to_a
     def user_pass_gen (length = gets.chomp.to_i)
     CHARS.sort_by { rand }.join[0...length]
     end
+end
     
     puts "This is your new password: " + user_pass_gen
 
 #This is for with symbols but no caps
-CHAR_LNS = ('0'..'9').to_a + ('a'..'z').to_a + ('!'..'+').to_a
+def passwordgen_LNS
+    CHAR_LNS = ('0'..'9').to_a + ('a'..'z').to_a + ('!'..'+').to_a
     def user_pass_gen (length = gets.chomp.to_i)
     CHARS.sort_by { rand }.join[0...length]
     end
+end
     
     puts "This is your new password: " + user_pass_gen
 
 #This is for no numbers
-CHARS_LSC = ('A'..'Z').to_a + ('a'..'z').to_a + ('!'..'+').to_a
+def passwordgen_LSC
+    CHARS_LSC = ('A'..'Z').to_a + ('a'..'z').to_a + ('!'..'+').to_a
     def user_pass_gen (length = gets.chomp.to_i)
     CHARS.sort_by { rand }.join[1...length]
     end
+end
     
     puts "This is your new password: " + user_pass_gen
