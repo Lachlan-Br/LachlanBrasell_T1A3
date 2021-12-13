@@ -29,7 +29,7 @@ end
 
 #This is option 3
 def input_user_up (profile_hasharray)
-    print "What profile name would you like to give this password?"
+    print "What profile name would you like to save this under?"
     prof = gets.chomp
     print "What would you like your username to be?"
         user_inp_usrname = gets.chomp
@@ -40,6 +40,51 @@ def input_user_up (profile_hasharray)
     profile_hasharray.push(profile)
     print_profiles(profile_hasharray)
 end
+
+def auto_user_up (profile_hasharray)
+    print "Please type out a profile name to save the password and/or username under: "
+    prof=gets.chomp
+
+    def passwordgen_LNSC
+        CHARS = ('0'..'9').to_a + ('A'..'Z').to_a + ('a'..'z').to_a + ('!'..'+').to_a
+        def user_pass_gen (length = gets.chomp.to_i)
+        CHARS.sort_by { rand }.join[0...length]
+        puts "This is your new password: " + user_pass_gen
+        end
+    end
+    
+
+
+
+
+
+    option = ""
+    while option != "f"
+        system "clear"
+        option = print_options
+    
+        case option
+            when "a"
+                passwordgen_LNSC
+            when "b"
+                #print_menu(hash_products)
+            when "c"
+                
+            when "d"
+                #auto generation
+            when "e"
+                #edit_delete_product(hash_products, "delete")
+            when "f"
+                next
+            else
+                puts "invalid option"
+        end
+        puts "press Enter to continue..."
+        gets
+        system "clear"
+    end
+end
+
 
 #This is option 5
 def edit_delete_product(profile_hasharray)
