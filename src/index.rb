@@ -41,53 +41,36 @@ def input_user_up (profile_hasharray)
     print_profiles(profile_hasharray)
 end
 
+#this is option 4
 def auto_user_up (profile_hasharray)
     print "Please type out a profile name to save the password and/or username under: "
     prof=gets.chomp
-
-    def passwordgen_LNSC
-        CHARS = ('0'..'9').to_a + ('A'..'Z').to_a + ('a'..'z').to_a + ('!'..'+').to_a
-        def user_pass_gen (length = gets.chomp.to_i)
-        CHARS.sort_by { rand }.join[0...length]
-        puts "This is your new password: " + user_pass_gen
+    puts "Would you like to auto-generate a password? y/n"
+    confirm_auto = gets.chomp   
+        if confirm_auto == "y"
+            passwordgen_LNSC
+        else
+            puts "Aborted."
         end
+    puts "Would you also like to create a username? y/n"
+    confirm_auto_u = gets.chomp   
+        if confirm_auto_u == "y"
+            usernamegen_LNSC
+        else
+            puts "Aborted."
+        end
+    profile_auto = {name:prof, username: user_username_gen, password: user_pass_gen}
+    profile_hasharray.push(profile_auto)
+    print_profiles(profile_hasharray)
     end
     
 
 
-
-
-
-    option = ""
-    while option != "f"
-        system "clear"
-        option = print_options
     
-        case option
-            when "a"
-                passwordgen_LNSC
-            when "b"
-                #print_menu(hash_products)
-            when "c"
-                
-            when "d"
-                #auto generation
-            when "e"
-                #edit_delete_product(hash_products, "delete")
-            when "f"
-                next
-            else
-                puts "invalid option"
-        end
-        puts "press Enter to continue..."
-        gets
-        system "clear"
-    end
-end
 
 
 #This is option 5
-def edit_delete_product(profile_hasharray)
+def edit_delete_product(profile_hasharray, passwordgen_LNSC)
     #show the list of products, just keys
     puts profile_hasharray.keys
     #ask about the product we want to delete
@@ -98,17 +81,32 @@ def edit_delete_product(profile_hasharray)
         print "Are you sure you want to delete it?(y/n) "
         confirm = gets.chomp
         if confirm == "y"
-            hash.delete(name)
+            profile_hasharray.delete(name)
             puts "You have deleted this profile."
         else
-            puts "Abortion deleted, going back to menu."
+            puts "Deletion has been aborted, going back to menu."
         end
     else
         puts "#{name} is not in the menu"
     end
-    print_menu(hash)
 end
 
+def usernamegen_LNSC
+    def user_username_gen (length = gets.chomp.to_i)
+    CHARS.sort_by { rand }.join[0...length]
+    puts "This is your new username: " + user_username_gen
+    end
+end
+
+def passwordgen_LNSC
+    
+    def user_pass_gen (length = gets.chomp.to_i)
+    CHARS.sort_by { rand }.join[0...length]
+    puts "This is your new password: " + user_pass_gen
+    end
+end
+
+CHARS = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz?/\\ |}{[]!@# $%^&*()1234567890_-+=<>,.`~'':;".split(//)
 
 profile_hasharray = [{name: "Yournamehere", username: "exampleuser", password: "examplepass"}, {name: "secondexample", username: "examptwo", password: "example"} ]
 
@@ -125,7 +123,7 @@ profile_hasharray = [{name: "Yournamehere", username: "exampleuser", password: "
             when "3"
                 input_user_up(profile_hasharray)
             when "4"
-                #auto generation
+                auto_user_up(profile_hasharray)
             when "5"
                 #edit_delete_product(hash_products, "delete")
             when "6"
