@@ -1,0 +1,2 @@
+gem 'ascii' $ bundle
+gem 'colorize' $ bundle

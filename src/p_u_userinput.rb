@@ -34,3 +34,39 @@
     else
       puts "Can't use the theme since password length is shorter than the theme."
     end
+    
+
+
+
+    class USERPASS
+      puts "Please give yourself a profile name: "
+      prof = gets.chomp
+      puts "would you like to make a password? Input 'y' to continue."
+      answer = gets.chomp
+      if answer == "y"
+          loop do
+              keys_lns = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz?/\\ |}{[]!@# $%^&*()1234567890_-+=<>,.`~'':;".split(//)
+                  password_u = ""
+                  puts "Passwords are hard to remember. Pick a theme to help! What theme would you like?:"
+              theme = gets.chomp
+              puts "How long would you like your password to be?(Must be longer than the theme as that theme is part of the password!):"
+              passwordlength = gets.chomp.to_i
+                  if passwordlength > theme.length  
+                    passwordlength -= theme.length
+                    password_u += theme
+                   while passwordlength > 0
+                  password_u += keys_lns.sample
+                   passwordlength -= 1
+               end
+               puts "This is your new password: " + password_u
+               break
+              else
+                puts "Can't use the theme since password length is shorter than the theme."
+              end
+          end
+      else
+              puts "okay bye"
+              
+          end
+      end
+      
