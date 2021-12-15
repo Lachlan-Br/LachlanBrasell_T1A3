@@ -3,6 +3,11 @@ require 'ascii'
 require 'bundler'
 require 'passgen'
 
+gem 'colorize'
+gem 'ascii'
+gem 'rspec'
+gem 'passgen'
+
 #put welcome page on here
 
 
@@ -14,7 +19,7 @@ require 'passgen'
 
 def print_options
     puts "1. View Profiles (passwords and usernames)."
-    puts "2. Add a profile."
+    puts "2. change this into something, maybe a color changer?"
     puts "3. Make new password or username."
     puts "4. Auto-generate a password or username"
     puts "5. Delete a profile. - Currently not working."

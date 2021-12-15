@@ -1,2 +1,5 @@
-gem 'ascii' $ bundle
-gem 'colorize' $ bundle
+source 'https://rubygems.org'
+gem 'colorize'
+gem 'ascii'
+gem 'rspec'
+gem 'passgen'
