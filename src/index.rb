@@ -17,15 +17,15 @@ def print_options
     puts "2. Add a profile."
     puts "3. Make new password or username."
     puts "4. Auto-generate a password or username"
-    puts "5. Delete a profile."
+    puts "5. Delete a profile. - Currently not working."
     puts "6. Exit out of this application"
-    print "Input 1 through 5 to visit corresponding area."
+    print "Input 1 through 6 to visit corresponding area."
     opt = gets.chomp
     return opt 
 end 
 
 
-    
+
 #This is option 1
 def print_profiles(profile_hasharray)
     puts "These are the current profiles: "
@@ -46,43 +46,29 @@ def input_user_up (profile_hasharray)
     print_profiles(profile_hasharray)
 end
 
-#this is option 4
-def auto_user_up (profile_hasharray, passwordgen_LNSC, usernamegen_LNSC)
-    print "Please type out a profile name to save the password and/or username under: "
-    prof=gets.chomp
-    puts "Would you like to auto-generate a password? y/n"
-    confirm_auto = gets.chomp   
-        if confirm_auto == "y"
-            passwordgen_LNSC
-        else
-            puts "Aborted."
-        end
-    puts "Would you also like to create a username? y/n"
-    confirm_auto_u = gets.chomp   
-        if confirm_auto_u == "y"
-            usernamegen_LNSC
-        else
-            puts "Aborted."
-        end
-    profile_aut = {name:prof, username: user_username_gen, password: user_pass_gen}
-    profile_hasharray.push(profile_aut)
-    print_profiles(profile_hasharray)
+#This is option 4
+def auto_user_up (profile_hasharray)
+    keys_lns = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz?/\\ |}{[]!@# $%^&*()1234567890_-+=<>,.`~'':;".split(//)
+    password = ""
+    puts "Passwords and usernames are hard to remember. Pick a theme to help! What theme would you like?:"
+    theme = gets.chomp
+    puts "How long would you like your password or username to be?(Must be longer than the theme as that theme is part of the password/username!):"
+    passwordlength = gets.chomp.to_i
+        if passwordlength > theme.length
+     passwordlength -= theme.length
+     password += theme
+         while passwordlength > 0
+     password += keys_lns.sample
+     passwordlength -= 1
     end
-    
+     puts "This is your new password or username: " + password
+     puts "------------Please press enter once you have written down this password/username!------------"
+     waiter = gets.chomp
+    else
+      puts "Can't use the theme since password length is shorter than the theme."
+    end
+end
 
-def passwordgen_LNSC
-    def user_pass_gen (length = gets.chomp.to_i)
-      CHARS.sort_by { rand }.join[0...length]
-      puts "This is your new password: " + user_pass_gen
-    end
- end
-    
-def usernamegen_LNSC
-    def user_username_gen (length = gets.chomp.to_i)
-    CHARS.sort_by { rand }.join[0...length]
-    puts "This is your new username: " + user_username_gen
-    end
- end
 
 #This is option 5
 def delete_profile(profile_hasharray)
@@ -103,10 +89,6 @@ def delete_profile(profile_hasharray)
     end
 end
 
-#passwordgen_LNSC
-
-CHARS = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz?/\\ |}{[]!@# $%^&*()1234567890_-+=<>,.`~'':;".split(//)
-
 profile_hasharray = [{name: "Yournamehere", username: "exampleuser", password: "examplepass"}, {name: "secondexample", username: "examptwo", password: "example"} ]
 
     option = ""
@@ -122,7 +104,7 @@ profile_hasharray = [{name: "Yournamehere", username: "exampleuser", password: "
             when "3"
                 input_user_up(profile_hasharray)
             when "4"
-                auto_user_up(profile_hasharray, usernamegen_LNSC, passwordgen_LNSC)
+                auto_user_up(profile_hasharray)
             when "5"
                 delete_profile(profile_hasharray)
             when "6"

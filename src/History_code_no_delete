@@ -48,3 +48,40 @@ def passwordgen_LNSC
     puts "This is your new password: " + user_pass_gen
     end
 end
+
+
+def passwordgen_LNSC
+    def user_pass_gen (length = gets.chomp.to_i)
+      CHARS.sort_by { rand }.join[0...length]
+      puts "This is your new password: " + user_pass_gen
+    end
+ end
+    
+def usernamegen_LNSC
+    def user_username_gen (length = gets.chomp.to_i)
+    CHARS.sort_by { rand }.join[0...length]
+    puts "This is your new username: " + user_username_gen
+    end
+ end
+
+
+ #this is option 4
+def auto_user_up (profile_hasharray, passwordgen_LNSC, usernamegen_LNSC)
+    print "Please type out a profile name to save the password and/or username under: "
+    prof=gets.chomp
+    puts "Would you like to auto-generate a password? y/n"
+    confirm_auto = gets.chomp   
+        if confirm_auto == "y"
+            passwordgen_LNSC
+        else
+            puts "Aborted."
+        end
+    puts "Would you also like to create a username? y/n"
+    confirm_auto_u = gets.chomp   
+        if confirm_auto_u == "y"
+            usernamegen_LNSC
+        else
+            puts "Aborted."
+        end
+
+    end
