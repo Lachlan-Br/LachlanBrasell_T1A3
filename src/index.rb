@@ -7,15 +7,26 @@ require 'passgen'
 
 
 #put welcome page on here
-Ascii.process("Welcome")
+puts "Firstly let's choose a colour!"
+color = gets.chomp.to_sym
 
-
+puts "░██╗░░░░░░░██╗███████╗██╗░░░░░░█████╗░░█████╗░███╗░░░███╗███████╗
+░██║░░██╗░░██║██╔════╝██║░░░░░██╔══██╗██╔══██╗████╗░████║██╔════╝
+░╚██╗████╗██╔╝█████╗░░██║░░░░░██║░░╚═╝██║░░██║██╔████╔██║█████╗░░
+░░████╔═████║░██╔══╝░░██║░░░░░██║░░██╗██║░░██║██║╚██╔╝██║██╔══╝░░
+░░╚██╔╝░╚██╔╝░███████╗███████╗╚█████╔╝╚█████╔╝██║░╚═╝░██║███████╗
+░░░╚═╝░░░╚═╝░░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝".colorize(color)
+sleep 2
 
 #---------------
-
-
-
-def print_options
+def print_options(color)
+    puts "
+    ░██╗░░░░░░░██╗░█████╗░██████╗░██████╗░  ██████╗░░█████╗░███╗░░██╗██╗░░██╗
+    ░██║░░██╗░░██║██╔══██╗██╔══██╗██╔══██╗  ██╔══██╗██╔══██╗████╗░██║██║░██╔╝
+    ░╚██╗████╗██╔╝██║░░██║██████╔╝██║░░██║  ██████╦╝███████║██╔██╗██║█████═╝░
+    ░░████╔═████║░██║░░██║██╔══██╗██║░░██║  ██╔══██╗██╔══██║██║╚████║██╔═██╗░
+    ░░╚██╔╝░╚██╔╝░╚█████╔╝██║░░██║██████╔╝  ██████╦╝██║░░██║██║░╚███║██║░╚██╗
+    ░░░╚═╝░░░╚═╝░░░╚════╝░╚═╝░░╚═╝╚═════╝░  ╚═════╝░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝".colorize(color)
     puts "1. View Profiles (passwords and usernames)."
     puts "2. Colorization - Not Functional"
     puts "3. Make new password or username."
@@ -30,11 +41,12 @@ end
 def print_profiles(profile_hasharray)
     puts "These are the current profiles: "
     #pulls profiles from array and prints on terminal screen
-    profile_hasharray.each {|profile, username, password| puts "#{profile}: #{username} #{password}" }.colorize(color)
+    profile_hasharray.each {|profile, username, password| puts "#{profile}: #{username} #{password}" }
 end
 #this is option 2
 def colorization 
-    puts "What colour do you wish to change the terminal text to? (Red, Green, Blue, Yellow, Orange, Purple.) "
+    puts "What colour do you wish to change the terminal text to? (Red, Green, Blue, Yellow, Purple.) "
+    #Gets user input to change colours.
     colour = gets.chomp.to_sym
 end
 
@@ -107,17 +119,18 @@ def delete_profile(profile_hasharray)
 end
 #current database for profiles (hasharray)
 profile_hasharray = [{name: "Yournamehere", username: "exampleuser", password: "examplepass"}, {name: "secondexample", username: "examptwo", password: "example"} ]
+color_array = [:Red, :Green, :Blue, :Yellow, :Orange, :Purple]
 
     option = ""
     while option != "6"
         system "clear"
-        option = print_options
+        option = print_options(color)
     
-        case option
+        case option(color)
             when "1"
                 print_profiles(profile_hasharray)
             when "2"
-                colorization
+                colorization(color_array)
             when "3"
                 input_user_up(profile_hasharray)
             when "4"

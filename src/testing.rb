@@ -1,6 +1,6 @@
 require 'colorize'
 color = gets.chomp.to_sym
-puts "is this now green?".colorize(color)
+print "is this now green?".colorize(color)
 
 #colouring
 
