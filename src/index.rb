@@ -4,8 +4,10 @@ require 'bundler'
 require 'passgen'
 
 
-#put welcome page on here
 
+
+#put welcome page on here
+Ascii.process("Welcome")
 
 
 
@@ -15,7 +17,7 @@ require 'passgen'
 
 def print_options
     puts "1. View Profiles (passwords and usernames)."
-    puts "2. Not Functional - Colorization"
+    puts "2. Colorization - Not Functional"
     puts "3. Make new password or username."
     puts "4. Auto-generate a password or username"
     puts "5. Delete a profile."
@@ -28,8 +30,14 @@ end
 def print_profiles(profile_hasharray)
     puts "These are the current profiles: "
     #pulls profiles from array and prints on terminal screen
-    profile_hasharray.each {|profile, username, password| puts "#{profile}: #{username} #{password}" }
+    profile_hasharray.each {|profile, username, password| puts "#{profile}: #{username} #{password}" }.colorize(color)
 end
+#this is option 2
+def colorization 
+    puts "What colour do you wish to change the terminal text to? (Red, Green, Blue, Yellow, Orange, Purple.) "
+    colour = gets.chomp.to_sym
+end
+
 #This is option 3
 def input_user_up (profile_hasharray)
     print "What profile name would you like to save this under? "
@@ -109,7 +117,7 @@ profile_hasharray = [{name: "Yournamehere", username: "exampleuser", password: "
             when "1"
                 print_profiles(profile_hasharray)
             when "2"
-                #colour choice?
+                colorization
             when "3"
                 input_user_up(profile_hasharray)
             when "4"
