@@ -7,26 +7,32 @@ require 'passgen'
 
 
 #put welcome page on here
-puts "Firstly let's choose a colour!"
+puts "Firstly let's choose a colour for the text!"
 color = gets.chomp.to_sym
-
-puts "░██╗░░░░░░░██╗███████╗██╗░░░░░░█████╗░░█████╗░███╗░░░███╗███████╗
+puts "secondly, What background colour would you like? "
+color_b = gets.chomp.to_sym
+    if color_b == color
+        puts "please exit and use two different colours."
+    end
+puts "
+░██╗░░░░░░░██╗███████╗██╗░░░░░░█████╗░░█████╗░███╗░░░███╗███████╗
 ░██║░░██╗░░██║██╔════╝██║░░░░░██╔══██╗██╔══██╗████╗░████║██╔════╝
 ░╚██╗████╗██╔╝█████╗░░██║░░░░░██║░░╚═╝██║░░██║██╔████╔██║█████╗░░
 ░░████╔═████║░██╔══╝░░██║░░░░░██║░░██╗██║░░██║██║╚██╔╝██║██╔══╝░░
 ░░╚██╔╝░╚██╔╝░███████╗███████╗╚█████╔╝╚█████╔╝██║░╚═╝░██║███████╗
-░░░╚═╝░░░╚═╝░░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝".colorize(color)
+░░░╚═╝░░░╚═╝░░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝
+".colorize(color).colorize(:background => color_b)
 sleep 2
 
 #---------------
-def print_options(color)
+def print_options(color, color_b)
     puts "
     ░██╗░░░░░░░██╗░█████╗░██████╗░██████╗░  ██████╗░░█████╗░███╗░░██╗██╗░░██╗
     ░██║░░██╗░░██║██╔══██╗██╔══██╗██╔══██╗  ██╔══██╗██╔══██╗████╗░██║██║░██╔╝
     ░╚██╗████╗██╔╝██║░░██║██████╔╝██║░░██║  ██████╦╝███████║██╔██╗██║█████═╝░
     ░░████╔═████║░██║░░██║██╔══██╗██║░░██║  ██╔══██╗██╔══██║██║╚████║██╔═██╗░
     ░░╚██╔╝░╚██╔╝░╚█████╔╝██║░░██║██████╔╝  ██████╦╝██║░░██║██║░╚███║██║░╚██╗
-    ░░░╚═╝░░░╚═╝░░░╚════╝░╚═╝░░╚═╝╚═════╝░  ╚═════╝░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝".colorize(color)
+    ░░░╚═╝░░░╚═╝░░░╚════╝░╚═╝░░╚═╝╚═════╝░  ╚═════╝░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝".colorize(color).colorize(:background => color_b)
     puts "1. View Profiles (passwords and usernames)."
     puts "2. Colorization - Not Functional"
     puts "3. Make new password or username."
@@ -44,10 +50,23 @@ def print_profiles(profile_hasharray)
     profile_hasharray.each {|profile, username, password| puts "#{profile}: #{username} #{password}" }
 end
 #this is option 2
-def colorization 
+def colorization (color, color_b)
     puts "What colour do you wish to change the terminal text to? (Red, Green, Blue, Yellow, Purple.) "
     #Gets user input to change colours.
-    colour = gets.chomp.to_sym
+    color = gets.chomp.to_sym
+    puts "Would you like to change the background colour? y/n "
+    conf_c = gets.chomp
+     if conf_c == "y"
+        puts "what colour would you like the background? "
+        color_b = gets.chomp.to_sym 
+        puts "Changing colours now! Two seconds please."
+        sleep 2 
+    else
+        puts "Alright, changing colours now...."
+        sleep 1
+    end
+
+    
 end
 
 #This is option 3
@@ -119,18 +138,18 @@ def delete_profile(profile_hasharray)
 end
 #current database for profiles (hasharray)
 profile_hasharray = [{name: "Yournamehere", username: "exampleuser", password: "examplepass"}, {name: "secondexample", username: "examptwo", password: "example"} ]
-color_array = [:Red, :Green, :Blue, :Yellow, :Orange, :Purple]
+color_array = [:color, :color_b]
 
     option = ""
     while option != "6"
         system "clear"
-        option = print_options(color)
+        option = print_options(color, color_b)
     
-        case option(color)
+        case option
             when "1"
                 print_profiles(profile_hasharray)
             when "2"
-                colorization(color_array)
+                colorization(color, color_b)
             when "3"
                 input_user_up(profile_hasharray)
             when "4"
