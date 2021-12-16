@@ -3,10 +3,6 @@ require 'ascii'
 require 'bundler'
 require 'passgen'
 
-gem 'colorize'
-gem 'ascii'
-gem 'rspec'
-gem 'passgen'
 
 #put welcome page on here
 
@@ -19,12 +15,12 @@ gem 'passgen'
 
 def print_options
     puts "1. View Profiles (passwords and usernames)."
-    puts "2. change this into something, maybe a color changer?"
+    puts "2. Not Functional - Colorization"
     puts "3. Make new password or username."
     puts "4. Auto-generate a password or username"
-    puts "5. Delete a profile. - Currently not working."
+    puts "5. Delete a profile."
     puts "6. Exit out of this application"
-    print "Input 1 through 6 to visit corresponding area."
+    puts "Input 1 through 6 to visit corresponding area."
     opt = gets.chomp
     return opt 
 end 
@@ -39,11 +35,11 @@ end
 
 #This is option 3
 def input_user_up (profile_hasharray)
-    print "What profile name would you like to save this under?"
+    print "What profile name would you like to save this under? "
     prof = gets.chomp
-    print "What would you like your username to be?"
+    print "What would you like your username to be? "
         user_inp_usrname = gets.chomp
-    print "Lastly what would you like your password to be?"
+    print "Lastly what would you like your password to be? "
         user_inp_pass = gets.chomp
     profile = {name: prof, username: user_inp_usrname, password: user_inp_pass} 
 
@@ -57,7 +53,7 @@ def auto_user_up (profile_hasharray)
     password = ""
     puts "Passwords and usernames are hard to remember. Pick a theme to help! What theme would you like?:"
     theme = gets.chomp
-    puts "How long would you like your password or username to be?(Must be longer than the theme as that theme is part of the password/username!):"
+    puts "How long would you like your password or username to be?(Must be longer than the theme as that theme is part of the password/username!): "
     passwordlength = gets.chomp.to_i
         if passwordlength > theme.length
      passwordlength -= theme.length
@@ -78,19 +74,15 @@ end
 #This is option 5
 def delete_profile(profile_hasharray)
     puts profile_hasharray
-    print "What profile would you like to delete? (Note you cannot get this back.)"
+    puts "What profile would you like to delete? (Note you cannot get this back.) "
     namedel = gets.chomp.to_sym
-    if profile_hasharray.has_key?(namedel)
-        print "Are you sure you want to delete it?(y/n) "
-        confirm = gets.chomp
+    print "Are you sure you want to delete it?(y/n) "
+    confirm = gets.chomp
         if confirm == "y"
             profile_hasharray.delete(namedel)
             puts "You have deleted this profile."
         else
             puts "Aborted."
-        end
-    else
-        puts "#{namedel} is not currently a profile."
     end
 end
 
@@ -105,7 +97,7 @@ profile_hasharray = [{name: "Yournamehere", username: "exampleuser", password: "
             when "1"
                 print_profiles(profile_hasharray)
             when "2"
-                #print_menu(hash_products)
+                #colour choice?
             when "3"
                 input_user_up(profile_hasharray)
             when "4"
