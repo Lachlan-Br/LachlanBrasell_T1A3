@@ -2,18 +2,21 @@ require 'colorize'
 require 'ascii'
 require 'bundler'
 require 'passgen'
+require 'tty-progressbar'
 
 
 
 
 #put welcome page on here
+loop do
 puts "Firstly let's choose a colour for the text!"
 color = gets.chomp.to_sym
 puts "secondly, What background colour would you like? "
 color_b = gets.chomp.to_sym
     if color_b == color
-        puts "please exit and use two different colours."
+        puts "Please use two different colours."
     end
+end
 puts "
 ░██╗░░░░░░░██╗███████╗██╗░░░░░░█████╗░░█████╗░███╗░░░███╗███████╗
 ░██║░░██╗░░██║██╔════╝██║░░░░░██╔══██╗██╔══██╗████╗░████║██╔════╝
@@ -60,9 +63,11 @@ def colorization (color, color_b)
         color_b = gets.chomp.to_sym 
         puts "Changing colours now! Two seconds please."
         sleep 2 
+        #insert loading times / bars for interactivity 
     else
         puts "Alright, changing colours now...."
         sleep 1
+        #insert loading times / bars for interactivity
     end
 
     
