@@ -1,29 +1,32 @@
 require 'colorize'
 require 'ascii'
-require 'bundler'
 require 'passgen'
 require 'tty-progressbar'
+require 'rspec'
 
 
 
 
 #put welcome page on here
-loop do
-puts "Firstly let's choose a colour for the text!"
+#puts "Welcome " + echo from bash
+#loop do
+puts "Firstly let's choose a colour for the text! (red, green, blue, yellow)"
 color = gets.chomp.to_sym
-puts "secondly, What background colour would you like? "
+puts "secondly, What background colour would you like? (red, green, blue, yellow)"
 color_b = gets.chomp.to_sym
     if color_b == color
         puts "Please use two different colours."
     end
-end
+#break
+#end
 puts "
 ░██╗░░░░░░░██╗███████╗██╗░░░░░░█████╗░░█████╗░███╗░░░███╗███████╗
 ░██║░░██╗░░██║██╔════╝██║░░░░░██╔══██╗██╔══██╗████╗░████║██╔════╝
 ░╚██╗████╗██╔╝█████╗░░██║░░░░░██║░░╚═╝██║░░██║██╔████╔██║█████╗░░
 ░░████╔═████║░██╔══╝░░██║░░░░░██║░░██╗██║░░██║██║╚██╔╝██║██╔══╝░░
 ░░╚██╔╝░╚██╔╝░███████╗███████╗╚█████╔╝╚█████╔╝██║░╚═╝░██║███████╗
-░░░╚═╝░░░╚═╝░░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝".colorize(color).colorize(:background => color_b)
+░░░╚═╝░░░╚═╝░░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝
+".colorize(color).colorize(:background => color_b)
 sleep 2
 
 #---------------
@@ -34,7 +37,8 @@ def print_options(color, color_b)
     ░╚██╗████╗██╔╝██║░░██║██████╔╝██║░░██║  ██████╦╝███████║██╔██╗██║█████═╝░
     ░░████╔═████║░██║░░██║██╔══██╗██║░░██║  ██╔══██╗██╔══██║██║╚████║██╔═██╗░
     ░░╚██╔╝░╚██╔╝░╚█████╔╝██║░░██║██████╔╝  ██████╦╝██║░░██║██║░╚███║██║░╚██╗
-    ░░░╚═╝░░░╚═╝░░░╚════╝░╚═╝░░╚═╝╚═════╝░  ╚═════╝░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝".colorize(color).colorize(:background => color_b)
+    ░░░╚═╝░░░╚═╝░░░╚════╝░╚═╝░░╚═╝╚═════╝░  ╚═════╝░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝
+    ".colorize(color).colorize(:background => color_b)
     puts "1. View Profiles (passwords and usernames)."
     puts "2. Colorization - Not Functional"
     puts "3. Make new password or username."
@@ -138,7 +142,7 @@ def delete_profile(profile_hasharray)
         else
             #error handling
             puts "Aborted."
-    end
+        end
 end
 #current database for profiles (hasharray)
 profile_hasharray = [{name: "Yournamehere", username: "exampleuser", password: "examplepass"}, {name: "secondexample", username: "examptwo", password: "example"} ]
@@ -163,9 +167,9 @@ color_array = [:color, :color_b]
             when "6"
                 next
             else
-                puts "invalid option"
+                puts "Please use numbers 1 through 6."
         end
-        puts "press Enter to continue..."
+        puts "press the ENTER key to continue."
         gets
         system "clear"
     end
