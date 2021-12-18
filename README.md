@@ -144,7 +144,8 @@ NOTE: if you would like to see the progress of each piece it is uploaded within 
 Help documentation which includes a set of instructions which accurately describe how to use and install the application.
 
 Firstly steps with bash:
-- Simply run the bash script (RunMe.sh)
+- Simply run the bash script (./RunMe.sh)
+NOTE: if this doesn't work and becomes an erorr please run it as "sh ./RunMe.sh"
 - Input colours of choice when prmopted via the terminal (Suggest colours work some colours may not due to gem limitation.)
 - If colours are the same you must restart the application.
 - Navigate via menu items (by inputing the corrosponding numbers.)
