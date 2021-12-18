@@ -4,7 +4,7 @@ echo "Preparing your password generator and bank...."
 
 rm Gemfile.lock
 
-gem install bundle
+gem install bundler
 
 clear
 
