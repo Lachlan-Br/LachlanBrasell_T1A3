@@ -20,7 +20,7 @@ color_b = gets.chomp.to_sym
         puts "Please use two different colours."
     end
 puts "Setting up colours, please wait!"
-bar = TTY::ProgressBar.new("downloading [:bar]", total: 15)
+bar = TTY::ProgressBar.new("Initialising... [:bar]", total: 15)
 15.times do
     sleep(0.1)
     bar.advance  # by default increases by 1
@@ -63,8 +63,8 @@ end
 #This is option 1
 def print_profiles(profile_hasharray)
     puts "Fetching your profiles...."
-    bar = TTY::ProgressBar.new("downloading [:bar]", total: 15)
-    15.times do
+    bar = TTY::ProgressBar.new("Fetching... [:bar]", total: 12)
+    12.times do
         sleep(0.1)
         bar.advance  # by default increases by 1
       end
