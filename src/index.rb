@@ -19,6 +19,10 @@ color_b = gets.chomp.to_sym
     if color_b == color
         puts "Please use two different colours."
     end
+
+#artii "art"
+#a = Artii::Base.new :font => 'slant'
+#a.asciify('Art!')
 #break
 #end
 puts "
@@ -136,18 +140,22 @@ def delete_profile(profile_hasharray)
     puts profile_hasharray
     puts "What profile would you like to delete? (Note you cannot get this back.) "
     #deletion command for profile verification
-    namedel = gets.chomp.to_sym
-    print "Are you sure you want to delete it?(y/n) "
+    name = gets.chomp
     #confirmation of deletion
-    confirm = gets.chomp
-        if confirm == "y"
-            #actual deletion of named piece from user in hasharray
-            profile_hasharray.delete(namedel)
-            puts "You have deleted this profile."
-        else
-            #error handling
-            puts "Aborted."
-        end
+    if profile_hasharray.include?(name)
+        print "Are you sure you want to delete it?(y/n) "
+        confirm = gets.chomp
+            if confirm == "y"
+                #actual deletion of named piece from user in hasharray
+                profile_hasharray.delete(name)
+                puts "You have deleted the #{name} profile."
+            else
+                #error handling
+                puts "Aborted."
+            end
+    else
+        puts "This profile #{name} does not exist."
+    end
 end
 #current database for profiles (hasharray)
 profile_hasharray = [{name: "Yournamehere", username: "exampleuser", password: "examplepass"}, {name: "secondexample", username: "examptwo", password: "example"} ]
