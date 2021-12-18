@@ -3,6 +3,7 @@ require 'ascii'
 require 'passgen'
 require 'tty-progressbar'
 require 'rspec'
+require 'artii'
 
 
 

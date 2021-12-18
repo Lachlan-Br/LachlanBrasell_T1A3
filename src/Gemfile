@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
+
+git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+
 gem 'colorize'
 gem 'ascii'
 gem 'rspec'
 gem 'passgen'
-gem 'progressbar'
+gem 'tty-progressbar'
+gem 'artii'
+gem 'bundler'
+
