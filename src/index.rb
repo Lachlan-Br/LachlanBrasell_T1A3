@@ -68,6 +68,8 @@ def print_profiles(profile_hasharray)
         sleep(0.1)
         bar.advance  # by default increases by 1
       end
+    puts "This is sensitive data, please make sure you're in a safe position to show it. - Press Enter when ready to show."
+    confirming = gets.chomp
     #artii 'profiles.'
     puts "These are the current profiles: "
     #pulls profiles from array and prints on terminal screen
