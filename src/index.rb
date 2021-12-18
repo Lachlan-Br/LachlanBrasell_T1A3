@@ -19,7 +19,12 @@ color_b = gets.chomp.to_sym
     if color_b == color
         puts "Please use two different colours."
     end
-
+puts "Setting up colours, please wait!"
+bar = TTY::ProgressBar.new("downloading [:bar]", total: 15)
+15.times do
+    sleep(0.1)
+    bar.advance  # by default increases by 1
+  end
 #artii "art"
 #a = Artii::Base.new :font => 'slant'
 #a.asciify('Art!')
@@ -57,6 +62,12 @@ def print_options(color, color_b)
 end 
 #This is option 1
 def print_profiles(profile_hasharray)
+    puts "Fetching your profiles...."
+    bar = TTY::ProgressBar.new("downloading [:bar]", total: 15)
+    15.times do
+        sleep(0.1)
+        bar.advance  # by default increases by 1
+      end
     #artii 'profiles.'
     puts "These are the current profiles: "
     #pulls profiles from array and prints on terminal screen
