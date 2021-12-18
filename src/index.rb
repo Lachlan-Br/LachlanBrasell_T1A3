@@ -4,6 +4,7 @@ require 'passgen'
 require 'tty-progressbar'
 require 'rspec'
 require 'artii'
+require 'rubygems'
 
 
 
@@ -11,9 +12,9 @@ require 'artii'
 #put welcome page on here
 #puts "Welcome " + echo from bash
 #loop do
-puts "Firstly let's choose a colour for the text! (red, green, blue, yellow)"
+puts "Firstly let's choose a colour for the text! (red, green, blue, yellow, leave blank for white!)"
 color = gets.chomp.to_sym
-puts "secondly, What background colour would you like? (red, green, blue, yellow)"
+puts "secondly, What background colour would you like? (red, green, blue, yellow, leave blank for none!)"
 color_b = gets.chomp.to_sym
     if color_b == color
         puts "Please use two different colours."
@@ -52,9 +53,11 @@ def print_options(color, color_b)
 end 
 #This is option 1
 def print_profiles(profile_hasharray)
+    #artii 'profiles.'
     puts "These are the current profiles: "
     #pulls profiles from array and prints on terminal screen
     profile_hasharray.each {|profile, username, password| puts "#{profile}: #{username} #{password}" }
+    puts "Here is a free random password! " + Passgen::generate
 end
 #this is option 2
 def colorization (color, color_b)
@@ -118,6 +121,7 @@ def auto_user_up (profile_hasharray)
      passwordlength -= 1
     end
      puts "This is your new password or username: " + password
+     puts "If you need a password or username aswell you can use this! " + Passgen::generate
      puts "------------Please press enter once you have written down this password/username!------------"
      #used for a double confirmation before continuing
      waiter = gets.chomp
