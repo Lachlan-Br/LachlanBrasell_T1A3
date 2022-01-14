@@ -8,6 +8,7 @@ end
 
 puts "This is your new password: " + user_pass_gen
 
+Attr: https://snippets.aktagon.com/snippets/456-a-random-password-generator-for-ruby
 
 
 #this is for with symbols

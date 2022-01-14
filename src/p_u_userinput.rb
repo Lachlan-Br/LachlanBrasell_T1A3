@@ -70,3 +70,8 @@
           end
       end
       
+
+      ATTR: https://dev.to/seanolad/creating-a-unique-password-generator-using-ruby-5ddj
+      https://stackoverflow.com/questions/39376428/secure-password-generation-with-random-chars
+
+      
